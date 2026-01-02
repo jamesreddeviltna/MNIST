@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 from PIL import Image, ImageOps
 
-MODEL_PATH = "model/mnist_cnn.keras"
+MODEL_PATH = "mnist_cnn.keras"
 CLASS_NAMES = [str(i) for i in range(10)]  # "0"..."9"
 
 st.set_page_config(page_title="MNIST Digit Classifier", page_icon="✍️")
