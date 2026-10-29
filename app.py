@@ -20,7 +20,7 @@ def preprocess_mnist(pil_img: Image.Image) -> np.ndarray:
     - grayscale
     - invert if background looks white
     - center/resize to 28x28
-    - normalize to [0,1]
+    - preserve pixel values in [0,255] for the model's Rescaling layer
     - shape = (1, 28, 28, 1)
     """
     # Convert to grayscale
@@ -36,8 +36,7 @@ def preprocess_mnist(pil_img: Image.Image) -> np.ndarray:
     # Resize to 28x28 (simple approach)
     img = img.resize((28, 28))
 
-    # Normalize
-    arr = np.array(img).astype("float32") / 255.0  # (28,28)
+    arr = np.array(img).astype("float32")  # (28,28)
 
     # Add channel + batch dims
     arr = arr[None, ..., None]  # (1,28,28,1)
